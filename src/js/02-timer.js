@@ -29,6 +29,7 @@ const countTime = () => {
   const countdown = new Date(refs.input.value) - new Date();
     if (countdown <= 0) {
     clearInterval(intervalId);
+    refs.btnStart.setAttribute('disabled', true);
     alert('Please choose a date in the future');
     return;
   } else {
