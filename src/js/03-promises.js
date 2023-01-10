@@ -13,8 +13,8 @@ function handleSubmit(e) {
   const step = +e.currentTarget.elements.step.value;
   const amount = +e.currentTarget.elements.amount.value;
     
-  for (let i = 1; i <= amount; i += 1) {
-    if (i === 1) {
+  for (let i = 0; i < amount; i += 1) {
+    if (i === 0) {
       createPromise(i, delay)
         .then(({ position, delay }) => {
           Notiflix.Notify.success(
@@ -27,7 +27,7 @@ function handleSubmit(e) {
           );
         });
     } else {
-      createPromise(i + 1, delay + step)
+      createPromise(i + 1, delay +i*step)
         .then(({ position, delay }) => {
           Notiflix.Notify.success(
             `✅ Fulfilled promise ${position} in ${delay}ms`

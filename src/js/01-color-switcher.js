@@ -8,15 +8,18 @@ const refs = {
     getBody: document.querySelector("body"),
 }
 let timerId = null;
+refs.btnStop.setAttribute('disabled', true);
        
 const onBtnClick = () => {
+    
     timerId = setInterval(() => {
     const currentColor = getRandomHexColor();
     refs.getBody.style.backgroundColor = currentColor;
     
 },1000)
-
+    
     refs.btnStart.setAttribute('disabled', true);
+    refs.btnStop.removeAttribute('disabled'); 
     
 }
 
@@ -26,7 +29,7 @@ refs.btnStart.addEventListener('click', onBtnClick)
 refs.btnStop.addEventListener('click', () => {
     clearInterval(timerId);
     refs.btnStart.removeAttribute('disabled');
-   
+    
 })
 
 
